@@ -1,0 +1,36 @@
+<div class="mat-typography" fxLayout="column" fxFlex fxFill>
+  <div fxLayout="column" fxLayoutAlign="center center" fxFlex fxFill *ngIf="! posts">
+    No posts.
+  </div>
+
+  <div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="1em" *ngIf="posts" class="page">
+    <mat-card *ngFor="let post of posts" class="post">
+      <img mat-card-image class="post-image" [src]="post.image" alt="Post Header Image" (error)="hideImage($event)">
+      <mat-card-title fxLayout="row">
+        <h1>{{post.title}}</h1>
+        <a mat-icon-button aria-label="Content Source Link" href="{{post.link}}" target="_blank">
+          <mat-icon>open_in_new</mat-icon>
+        </a>
+      </mat-card-title>
+      <mat-card-subtitle>
+        <h3>{{post.sub_title}}</h3>
+      </mat-card-subtitle>
+      <mat-card-content>
+        <p>{{post.body}}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <span fxFlex>&nbsp;</span>
+
+  <mat-divider></mat-divider>
+
+  <span class="footer" fxLayout="row" fxLayoutAlign="end center">
+    <div fxLayout="column">
+      <div>LIDP Consulting Services Inc.</div>
+      <div>Developer Challenge 2.0.0</div>
+    </div>
+
+    <img src="assets/img/lidp.svg" alt="LIDP Logo">
+  </span>
+</div>

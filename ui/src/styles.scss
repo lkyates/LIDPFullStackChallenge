@@ -1,0 +1,21 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+@mixin styles($theme) {
+  $background: mat-color(map-get($theme, background), background);
+  $text: mat-color(map-get($theme, foreground), text);
+
+  body {
+    background: $background;
+    color: $text;
+
+    app-root {
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding: 1em;
+      width: 100%;
+      height: 100% !important;
+    }
+  }
+}
