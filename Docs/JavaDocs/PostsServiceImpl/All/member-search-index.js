@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"com.lidp.challenge.service","c":"PostsServiceImpl","l":"getPosts()"},{"p":"com.lidp.challenge.service","c":"PostsServiceImpl","l":"PostsServiceImpl(PostsRepository)","u":"%3Cinit%3E(com.lidp.challenge.persistence.dao.PostsRepository)"}];updateSearchResults();

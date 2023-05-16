@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"com.lidp.challenge.service.inf","c":"PostsService","l":"getPosts()"}];updateSearchResults();

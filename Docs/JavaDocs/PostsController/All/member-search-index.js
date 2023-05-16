@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"com.lidp.challenge.controller","c":"PostsController","l":"getPosts()"},{"p":"com.lidp.challenge.controller","c":"PostsController","l":"PostsController(PostsService)","u":"%3Cinit%3E(com.lidp.challenge.service.inf.PostsService)"}];updateSearchResults();
