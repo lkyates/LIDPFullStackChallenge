@@ -1,0 +1,56 @@
+plugins {
+  id 'base'
+  id 'com.github.node-gradle.node' version '3.1.0'
+}
+
+node {
+  download = true
+  version = '12.22.3'
+}
+
+task ngBuild(type: NpmTask, dependsOn: npmInstall) {
+  group 'angular'
+  description 'builds the production version of files and places them in ./dist'
+
+  args = ['run', 'build-prod']
+
+  inputs.files('package.json', 'package-lock.json', 'angular.json', 'tsconfig.json', 'tsconfig.app.json')
+  inputs.dir('src')
+  inputs.dir(fileTree('node_modules').exclude('.cache'))
+  outputs.dir('dist')
+  outputs.cacheIf { true }
+}
+
+task ngServe(type: NpmTask, dependsOn: npmInstall) {
+  group 'angular'
+  description 'runs the Angular live development server for convienent testing'
+
+  args = ['run', 'dev']
+
+  inputs.files('package.json', 'package-lock.json', 'angular.json', 'tsconfig.json', 'tsconfig.app.json')
+  inputs.dir('src')
+  inputs.dir(fileTree('node_modules').exclude('.cache'))
+  outputs.dir('dist')
+  outputs.cacheIf { true }
+}
+
+task cleanDist(type: Delete) {
+  delete 'dist'
+}
+
+task cleanDep(type: Delete) {
+  delete 'node_modules'
+}
+
+build {
+  dependsOn 'ngBuild'
+}
+
+clean {
+  dependsOn 'cleanDist', 'cleanDep'
+}
+
+final def packageJsons = [
+  'package.json',
+  'package-lock.json'
+]

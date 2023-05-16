@@ -1,0 +1,48 @@
+# Spring specific configurations
+spring:
+
+  # Specifies the embedded H2 database to point to the local file system.
+  # This allows for persistent H2 storage and can be tracked with the project.
+  # This is great for testing and sharing with developers but should not be done in production.
+  datasource:
+    url: jdbc:h2:file:./data/challenge
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+
+  # Sets Spring's default dialog to H2 for simply JPA references.
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+
+  # H2 specific configurations
+  h2:
+    console:
+
+      # During development access the console is a valuable tool.
+      # This should not be enabled in production.
+      enabled: true
+
+      # A custom path can be specified when hosted by Spring.
+      path: /h2-management-console
+
+      # This configuration allows for anyone to connect to the H2 database and console. By default, only
+      # localhost has access to the database and the console.
+      #
+      # This exposes your local environment and may require changes to firewall settings on your device to allow
+      # external access. This should be done sparingly but is great for development and sharing.
+      #
+      # This should NEVER be enabled in production.
+      settings:
+        web-allow-others: true
+
+# Server configurations define certain startup properties for the Spring Boot server (embedded Tomcat)
+server:
+
+  # Starts up the application on port other than the default 8080
+  port: 9690
+
+  # This disables the default Spring provided error page on routing. A custom error page should be provided in the
+  # project resource templates directory
+  error:
+    whitelabel:
+      enabled: false

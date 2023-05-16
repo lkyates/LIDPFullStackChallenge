@@ -1,0 +1,50 @@
+plugins {
+	id 'org.springframework.boot' version '2.7.2'
+	id 'io.spring.dependency-management' version '1.0.12.RELEASE'
+	id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// Spring Ecosystem
+	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	// Embedded H2 database
+	implementation 'com.h2database:h2'
+
+	// Unit Testing Only
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'junit:junit:4.13.2'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+task cleanStatic(type: Delete) {
+	group 'ui'
+	description 'Clean Spring static content'
+
+	delete 'src/main/resources/static'
+}
+
+task copyAngularDist(type: Copy) {
+	group 'ui'
+	description 'Build and copy Angular distribution'
+
+	dependsOn 'cleanStatic', ':ui:ngBuild'
+
+	from '../ui/dist'
+	into 'src/main/resources/static'
+}

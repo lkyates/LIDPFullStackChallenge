@@ -1,0 +1,14 @@
+dist
+node_modules
+out-tsc
+.eslintignore
+.eslintrc.js
+package.json
+package-lock.json
+karma.conf.js
+protractor.conf.js
+protractor-dev.conf.js
+
+src/polyfills.ts
+src/typings.d.ts
+src/assets/*

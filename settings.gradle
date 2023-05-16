@@ -1,0 +1,4 @@
+rootProject.name = 'lidp-challenge'
+
+include 'server'
+include 'ui'

@@ -1,0 +1,24 @@
+.footer {
+  padding-top: 1em;
+  font-size: 0.75em;
+
+  img {
+    padding-left: 1em;
+    width: 5em;
+  }
+}
+
+.page {
+  overflow-y: auto;
+}
+
+.post {
+  max-width: 25em;
+  margin-bottom: 1em;
+}
+
+.post-image {
+  max-height: 25em;
+  object-fit: cover;
+  object-position: top;
+}

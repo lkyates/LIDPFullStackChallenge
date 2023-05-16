@@ -1,0 +1,24 @@
+@import 'styles';
+@import '~@angular/material/theming';
+@include mat-core();
+
+$custom-typography: mat-typography-config(
+  $font-family: roboto
+);
+
+@include mat-core($custom-typography);
+
+$dark-blue-app-primary: mat-palette($mat-blue, 700, A200);
+$dark-blue-app-accent: mat-palette($mat-blue, 400, A200);
+$dark-blue-app-warn: mat-palette($mat-red);
+$dark-blue-theme: mat-dark-theme($dark-blue-app-primary, $dark-blue-app-accent, $dark-blue-app-warn);
+
+$critical: mat-palette($mat-red, 900, A700);
+$error: mat-palette($mat-red);
+$warn: mat-palette($mat-orange);
+$success: mat-palette($mat-blue);
+$transition: 'ease 250ms all';
+
+// Default theme
+@include angular-material-theme($dark-blue-theme);
+@include styles($dark-blue-theme);
